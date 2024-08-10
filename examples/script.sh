@@ -35,12 +35,10 @@ CHECKPOINT_MODELS["https://huggingface.co/StableDiffusionVN/Flux/resolve/main/Ch
 LORA_MODELS["https://huggingface.co/comfyanonymous/flux_RealismLora_converted_comfyui/resolve/main/flux_realism_lora.safetensors"]="flux_realism_lora.safetensors"
 
 # UPSCALE_MODELS
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/esrgan.sh"
 
 # CONTROLNET_MODELS
 
 # AURASR_MODELS
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/aurasr.sh"
 
 # IPADAPTER_MODELS
 
