@@ -183,7 +183,7 @@ function provisioning_ensure_models() {
 
 function provisioning_file_patches() {
     for url in "${!FILE_PATCHES[@]}"; do
-        fn="${arr[$url]}"
+        fn="${FILE_PATCHES[$url]}"
         provisioning_patch_file "$url" "$fn"
     done
 }
