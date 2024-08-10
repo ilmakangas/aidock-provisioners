@@ -21,7 +21,7 @@ My modular ComfyUI provisioning scripts for [https://github.com/ai-dock/comfyui]
     * Make sure the filename has the word `secret` in it
 5. Encrypt the provisioning script before committing to the repository
     ```
-    $ age encrypt --in-place my-provisioner.secret.sh
+    $ sops encrypt --in-place my-provisioner.secret.sh
     ```
 6. Create a RunPod template (next section has an example)
     * You can get the `LOADER_SOPSKEY` from the generated age key file
