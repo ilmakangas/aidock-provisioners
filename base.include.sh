@@ -7,15 +7,6 @@ PIP_PACKAGES=(
 )
 
 NODES=(
-    "https://github.com/ltdrdata/ComfyUI-Manager"
-    "https://github.com/11cafe/comfyui-workspace-manager"
-    "https://github.com/rgthree/rgthree-comfy"
-    "https://github.com/GreenLandisaLie/AuraSR-ComfyUI"
-    "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
-    "https://github.com/TinyTerra/ComfyUI_tinyterraNodes"
-    "https://github.com/kijai/ComfyUI-KJNodes"
-    "https://github.com/cubiq/ComfyUI_essentials"
-    "https://github.com/chrisgoringe/cg-use-everywhere"
 )
 
 declare -A CHECKPOINT_MODELS=(
@@ -47,6 +38,10 @@ declare -A IPADAPTER_MODELS=(
 
 declare -A CLIP_VISION_MODELS=(
 )
+
+declare -A FILE_PATCHES=(
+)
+
 
 
 function pip_install() {
@@ -186,6 +181,13 @@ function provisioning_ensure_models() {
     done
 }
 
+function provisioning_file_patches() {
+    for url in "${!FILE_PATCHES[@]}"; do
+        fn="${arr[$url]}"
+        provisioning_patch_file "$url" "$fn"
+    done
+}
+
 function provisioning_patch_file() {
     if [[ -z $2 ]]; then return 1; fi
     url="$1"
@@ -257,5 +259,3 @@ function provisioning_download() {
         wget -qnc --content-disposition --show-progress -e dotbytes="${3:-4M}" -O "$2" "$1"
     fi
 }
-
-provisioning_start
