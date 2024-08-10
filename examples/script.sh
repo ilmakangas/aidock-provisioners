@@ -1,14 +1,17 @@
 #!/bin/bash
 
-wget "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/base.include.sh" -O base.sh || { echo "ERROR: Failed to load the base include"; exit 1; }
+# Uncomment the following line and replace the URL to point into your OWN repository
+# wget "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/base.include.sh" -O base.sh || { echo "ERROR: Failed to load the base include"; exit 1; }
 chmod +x base.sh
 source base.sh
 
 ############### BASE ##############
+# Point all the URLs into your own repository
 provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/base/nodes-base.sh"
 provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/base/nodes-flux-base.sh"
 
 ############### UPSCALE ###############
+# Point all the URLs into your own repository
 provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/esrgan.sh"
 provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/aurasr.sh"
 
