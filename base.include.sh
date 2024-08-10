@@ -79,6 +79,20 @@ function provisioning_ensure_models() {
     done
 }
 
+function provisioning_patch_file() {
+    if [[ -z $2 ]]; then return 1; fi
+    url="$1"
+    shift
+    localfile="$1"
+    localdir=$(dirname "$1")
+    mkdir -p "$localdir"
+
+    printf "Patching %s with file from: %s\n" "$localfile" "$url"
+    wget -O "$localfile" "$url"
+}
+
+
+
 function provisioning_print_header() {
     printf "\n##############################################\n#                                            #\n#          Provisioning container            #\n#                                            #\n#         This will take some time           #\n#                                            #\n# Your container will be ready on completion #\n#                                            #\n##############################################\n\n"
     if [[ $DISK_GB_ALLOCATED -lt $DISK_GB_REQUIRED ]]; then
