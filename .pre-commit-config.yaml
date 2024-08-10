@@ -1,0 +1,8 @@
+---
+fail_fast: false
+
+repos:
+  - repo: https://github.com/ilmakangas/pre-commit-hook-ensure-sops
+    rev: v1.0
+    hooks:
+      - id: sops-encryption
