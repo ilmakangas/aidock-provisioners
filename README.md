@@ -29,11 +29,13 @@ My modular ComfyUI provisioning scripts for [https://github.com/ai-dock/comfyui]
 
 ## Example RunPod template
 ![Screenshot](/screenshot.png?raw=true)
-
+### Volume mount path on template
+A RunPod network volume should be mounted to /workspace/modelstorage. All the models are thus downloaded only once and persist on that volume even if you destroy your Pod and create a new one. When a new Pod is started, the required models are downloaded (if they do not already exist) and then copied from the network volume to the local pod filesystem for enhanced performance in ComfyUI.
 ### Environment variables for template
 | Key name |  Explanation
 |:-------  | :----------- 
 | HF_TOKEN | HuggingFace API token for downloading models
 | CIVITAI_TOKEN | CivitAI API token for downloading models
+| PROVISIONING_SCRIPT | URL to the `loader.sh` script in the repo
 | LOADER_TARGET | URL to an actual provisioning script in the repo (e.g. flux.secret.sh or sdxl.secret.sh)
 | LOADER_SOPSKEY | AGE private key used to decrypt the provisioning script (e.g. AGE-SECRET-KEY-xxxxxxxxxxxxxxxxxxxxxxxxx...)
