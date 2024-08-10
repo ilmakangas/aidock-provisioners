@@ -18,9 +18,10 @@ wget https://github.com/getsops/sops/releases/download/v3.9.0/sops-v3.9.0.linux.
 chmod +x sops
 
 echo "Decrypting target"
-SOPS_AGE_KEY_FILE=sops.key ./sops decrypt --in-place target.sh || { echo "ERROR: Failed to decrypt the target"; exit 1; }
-rm sops.key
-rm sops
+export SOPS_AGE_KEY_FILE=sops.key 
+
+./sops decrypt --in-place target.sh || { echo "ERROR: Failed to decrypt the target"; exit 1; }
+
 
 echo "Executing target"
 source target.sh

@@ -1,5 +1,53 @@
 #!/bin/bash
 
+APT_PACKAGES=(
+)
+
+PIP_PACKAGES=(
+)
+
+NODES=(
+    "https://github.com/ltdrdata/ComfyUI-Manager"
+    "https://github.com/11cafe/comfyui-workspace-manager"
+    "https://github.com/rgthree/rgthree-comfy"
+    "https://github.com/GreenLandisaLie/AuraSR-ComfyUI"
+    "https://github.com/ltdrdata/ComfyUI-Impact-Pack"
+    "https://github.com/TinyTerra/ComfyUI_tinyterraNodes"
+    "https://github.com/kijai/ComfyUI-KJNodes"
+    "https://github.com/cubiq/ComfyUI_essentials"
+    "https://github.com/chrisgoringe/cg-use-everywhere"
+)
+
+declare -A CHECKPOINT_MODELS=(
+)
+
+declare -A CLIP_MODELS=(
+)
+
+declare -A UNET_MODELS=(
+)
+
+declare -A VAE_MODELS=(
+)
+
+declare -A LORA_MODELS=(
+)
+
+declare -A UPSCALE_MODELS=(
+)
+
+declare -A CONTROLNET_MODELS=(
+)
+
+declare -A AURASR_MODELS=(
+)
+
+declare -A IPADAPTER_MODELS=(
+)
+
+declare -A CLIP_VISION_MODELS=(
+)
+
 
 function pip_install() {
     if [[ -z $MAMBA_BASE ]]; then
@@ -51,6 +99,65 @@ function provisioning_get_default_workflow() {
             echo "export const defaultGraph = $workflow_json;" > /opt/ComfyUI/web/scripts/defaultGraph.js
         fi
     fi
+}
+
+function provisioning_include() {
+    if [[ -z $1 ]]; then return 1; fi
+    url="$1"
+   
+    printf "Including: %s\n" "$url"
+    wget -O include.sh "$url"
+
+    if [[ $url == *"secret"* ]]; then
+        echo "Decrypting SOPS include"
+        ./sops decrypt --in-place include.sh || { echo "ERROR: Failed to decrypt the include"; exit 1; }
+    fi
+    chmod +x include.sh    
+    source include.sh
+    rm include.sh
+}
+
+function provisioning_models() {
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/checkpoints" \
+        "/opt/ComfyUI/models/checkpoints" \
+        CHECKPOINT_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/unet" \
+        "/opt/ComfyUI/models/unet" \
+        UNET_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/loras" \
+        "/opt/ComfyUI/models/loras" \
+        LORA_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/controlnet" \
+        "/opt/ComfyUI/models/controlnet" \
+        CONTROLNET_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/vae" \
+        "/opt/ComfyUI/models/vae" \
+        VAE_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/clip" \
+        "/opt/ComfyUI/models/clip" \
+        CLIP_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/esrgan" \
+        "/opt/ComfyUI/models/upscale_models" \
+        UPSCALE_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/Aura-SR" \
+        "/opt/ComfyUI/models/Aura-SR" \
+        AURASR_MODELS
+     provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/ipadapter" \
+        "/opt/ComfyUI/models/ipadapter" \
+        IPADAPTER_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/clip_vision" \
+        "/opt/ComfyUI/models/clip_vision" \
+        CLIP_VISION_MODELS
 }
 
 function provisioning_ensure_models() {
