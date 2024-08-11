@@ -1,19 +1,19 @@
 #!/bin/bash
 
 # Uncomment the following line and replace the URL to point into your OWN repository
-# wget "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/base.include.sh" -O base.sh || { echo "ERROR: Failed to load the base include"; exit 1; }
+# wget "https://raw.githubusercontent.com/ilmakangas/aidock-provisioners/main/targets/comfyui/base.sh" -O base.sh || { echo "ERROR: Failed to load the base include"; exit 1; }
 chmod +x base.sh
 source base.sh
 
 ############### BASE ##############
 # Point all the URLs into your own repository
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/base/nodes-base.sh"
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/base/nodes-flux-base.sh"
+provisioning_include "https://raw.githubusercontent.com/ilmakangas/aidock-provisioners/main/includes/comfyui/base/base-nodes.sh"
+provisioning_include "https://raw.githubusercontent.com/ilmakangas/aidock-provisioners/main/includes/comfyui/base/flux-increased-perf.sh"
 
 ############### UPSCALE ###############
 # Point all the URLs into your own repository
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/esrgan.sh"
-provisioning_include "https://raw.githubusercontent.com/ilmakangas/comfyui-provisioners/main/includes/upscaling/aurasr.sh"
+provisioning_include "https://raw.githubusercontent.com/ilmakangas/aidock-provisioners/main/includes/comfyui/upscaling/esrgan.sh"
+provisioning_include "https://raw.githubusercontent.com/ilmakangas/aidock-provisioners/main/includes/comfyui/upscaling/aurasr.sh"
 
 
 ############## MODELS ##################

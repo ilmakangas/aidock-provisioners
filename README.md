@@ -1,6 +1,6 @@
-# comfyui-provisioners
+# aidock-provisioners
 
-My modular ComfyUI provisioning scripts for [https://github.com/ai-dock/comfyui](https://github.com/ai-dock/comfyui) to be used on RunPod. The actual provisioning script is stored encrypted in the Git repository using [SOPS](https://github.com/getsops/sops).
+My modular Stable Diffusion UI (ComfyUI, InvokeAI...) provisioning scripts for [https://github.com/ai-dock](https://github.com/ai-dock) images to be used on RunPod. The actual provisioning script is stored encrypted in the Git repository using [SOPS](https://github.com/getsops/sops).
 
 ## Prerequisites
 * Install [SOPS](https://github.com/getsops/sops) tool on local computer
@@ -17,11 +17,12 @@ My modular ComfyUI provisioning scripts for [https://github.com/ai-dock/comfyui]
     * This key is used by SOPS to encrypt the provisioning script
 4. Create a provisioning script
     * Example file in the repo
-        * `examples/script.sh` 
+        * `examples/target-comfyui.sh` 
+    * Store the script in `targets/` folder
     * Make sure the filename has the word `secret` in it
 5. Encrypt the provisioning script before committing to the repository
     ```
-    $ sops encrypt --in-place my-provisioner.secret.sh
+    $ sops encrypt --in-place my-target.secret.sh
     ```
 6. Create a RunPod template (next section has an example)
     * You can get the `LOADER_SOPSKEY` from the generated age key file
