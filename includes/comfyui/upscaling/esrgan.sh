@@ -2,4 +2,5 @@
 
 UPSCALE_MODELS["https://huggingface.co/ai-forever/Real-ESRGAN/resolve/main/RealESRGAN_x4.pth"]="RealESRGAN_x4.pth"
 UPSCALE_MODELS["https://huggingface.co/Akumetsu971/SD_Anime_Futuristic_Armor/resolve/main/4x_NMKD-Siax_200k.pth"]="4x_NMKD-Siax_200k.pth"
-UPSCALE_MODELS["https://huggingface.co/thataigod/UltraSharp4X/resolve/main/4x-UltraSharp.pth"]="4x-UltraSharp.pth"
+#UPSCALE_MODELS["https://huggingface.co/thataigod/UltraSharp4X/resolve/main/4x-UltraSharp.pth"]="4x-UltraSharp.pth"
+UPSCALE_MODELS["https://github.com/Phhofm/models/releases/download/4xNomos8k_atd_jpg/4xNomos8k_atd_jpg.safetensors"]="4xNomos8k_atd_jpg.safetensors"
