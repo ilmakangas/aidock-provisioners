@@ -12,7 +12,13 @@ NODES=(
 declare -A CHECKPOINT_MODELS=(
 )
 
+declare -A DIFFUSION_MODELS=(
+)
+
 declare -A CLIP_MODELS=(
+)
+
+declare -A TEXT_ENCODER_MODELS=(
 )
 
 declare -A UNET_MODELS=(
