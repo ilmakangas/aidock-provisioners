@@ -1,7 +1,7 @@
 #!/bin/bash
 
-NODES+=("https://github.com/ltdrdata/ComfyUI-Manager")
-NODES+=("https://github.com/11cafe/comfyui-workspace-manager")
+#NODES+=("https://github.com/ltdrdata/ComfyUI-Manager")
+#NODES+=("https://github.com/11cafe/comfyui-workspace-manager")
 NODES+=("https://github.com/pythongosssss/ComfyUI-Custom-Scripts")
 NODES+=("https://github.com/rgthree/rgthree-comfy")
 NODES+=("https://github.com/ltdrdata/ComfyUI-Impact-Pack")
