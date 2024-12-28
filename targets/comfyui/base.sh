@@ -118,6 +118,10 @@ function provisioning_models() {
         "/opt/ComfyUI/models/checkpoints" \
         CHECKPOINT_MODELS
     provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/diffusion_models" \
+        "/opt/ComfyUI/models/diffusion_models" \
+        DIFFUSION_MODELS
+    provisioning_ensure_models \
         "${WORKSPACE}/modelstorage/unet" \
         "/opt/ComfyUI/models/unet" \
         UNET_MODELS
@@ -137,6 +141,10 @@ function provisioning_models() {
         "${WORKSPACE}/modelstorage/clip" \
         "/opt/ComfyUI/models/clip" \
         CLIP_MODELS
+    provisioning_ensure_models \
+        "${WORKSPACE}/modelstorage/text_encoders" \
+        "/opt/ComfyUI/models/text_encoders" \
+        TEXT_ENCODER_MODELS
     provisioning_ensure_models \
         "${WORKSPACE}/modelstorage/esrgan" \
         "/opt/ComfyUI/models/upscale_models" \
